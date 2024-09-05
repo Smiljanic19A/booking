@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,8 @@ class HomeController extends Controller
                 "unique_id"=>$id
             ]);
         }
+        session::push('user_id', $guestUser->id);
+
         return view("home.home")->with('user', $guestUser);
     }
 }

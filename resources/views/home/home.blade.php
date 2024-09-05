@@ -1,0 +1,10 @@
+@extends("layout")
+    @section("content")
+        @if(isset($user))
+            <p>
+                {{$user->unique_id}}
+            </p>
+        @else
+            @dd("kurac")
+        @endif
+    @endsection

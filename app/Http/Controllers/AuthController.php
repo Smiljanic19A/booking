@@ -31,6 +31,6 @@ class AuthController extends Controller
         }
         session()->push("username", $request->username);
 
-        return view("home.home")->with("user", $newUser);
+        return redirect(route("home.home", ["user" => $newUser]));
     }
 }

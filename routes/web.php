@@ -12,6 +12,7 @@ Route::controller(HomeController::class)
         Route::get("/guest", "guest")->name("guest");
         Route::get("/authenticateGuest/{id}", "authGuest")->name("guest.auth");
         //User Authentication Routes
+        Route::get("/home/{user}", "pushToHome")->name("home");
 });
 Route::controller(AuthController::class)
     ->name("auth.")

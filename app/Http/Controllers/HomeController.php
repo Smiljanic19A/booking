@@ -32,6 +32,11 @@ class HomeController extends Controller
         }
         session::push('user_id', $guestUser->id);
 
-        return view("home.home")->with('user', $guestUser);
+        return redirect(route("home.home", ["user" => $guestUser]));
+    }
+
+    public function pushToHome(User $user)
+    {
+        return view("home.home")->with("user", $user);
     }
 }

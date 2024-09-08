@@ -22,7 +22,7 @@ class VendorShopRegistrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "user_id" => "required|int|unique:users,id",
+            "user_id" => "required|int",
             "name" => "required|string",
             "contact_number" => "required|int",
             "description" => "nullable|string",

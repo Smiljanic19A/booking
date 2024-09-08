@@ -24,5 +24,7 @@ Route::controller(AuthController::class)
 
         Route::get("/vendor", "vendorRegistration")->name("vendor");
         Route::post("/vendor/register", "registerVendorUser")->name("vendor.user");
+        Route::post("/vendor/register/information", "registerVendorInformation")->name("vendor.register");
+
     });
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegistrationRequest;
 use App\Http\Requests\VendorRegistrationRequest;
+use App\Http\Requests\VendorShopRegistrationRequest;
 use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -64,8 +66,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function registerVendorInformation()
+    public function registerVendorInformation(VendorShopRegistrationRequest $request)
     {
-        return redirect()->back()->with("vendor_user_registered", true);
+        $params = $request->except("_token");
+        $vendor = Vendor::create($params);
+        dd($vendor);
     }
 }

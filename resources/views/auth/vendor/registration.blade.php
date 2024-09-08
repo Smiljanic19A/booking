@@ -32,7 +32,7 @@
     @endif
 
     @if(session('vendor_user_registered'))
-        <form action="">
+        <form action="{{route("auth.vendor.register")}}" method="post">
             @csrf
             <input name="user_id" type="hidden" value="{{session('id')}}">
 

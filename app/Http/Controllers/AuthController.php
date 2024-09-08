@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegistrationRequest;
+use App\Http\Requests\VendorRegistrationRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,8 +41,23 @@ class AuthController extends Controller
     {
         return view("auth.vendor.registration");
     }
-    public function registerVendorUser()
+    public function registerVendorUser(VendorRegistrationRequest $request)
     {
+        //check if the passwords match
+        if (trim($request->password) !== trim($request->confirm_password)){
+            return redirect()->back()->withErrors(['password' => 'Passwords Do Not Match!']);
+        }
+        //create the user
+        $newUser = User::create([
+            "username" => $request->username,
+            "password" => Hash::make($request->password),
+            "email" => $request->email
+        ]);
+        if($newUser === null){
+            dd("Kurac nesto puklo... Napravi error page!!!"); //TODO: make an error page
+        }
+        session()->push("username", $request->username);
+
         return redirect()->back()->with("vendor_user_registered", true);
     }
 

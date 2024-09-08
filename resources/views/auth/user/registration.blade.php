@@ -24,7 +24,7 @@
         <input type="password" name="confirm_password" id="">
 
         <label for="email">Email:</label>
-        <input type="email">
+        <input type="email" name="email">
 
         <input type="submit">
     </form>

@@ -58,7 +58,10 @@ class AuthController extends Controller
         }
         session()->push("username", $request->username);
 
-        return redirect()->back()->with("vendor_user_registered", true);
+        return redirect()->back()->with([
+            "vendor_user_registered" => true,
+            "id" => $newUser->id
+        ]);
     }
 
     public function registerVendorInformation()

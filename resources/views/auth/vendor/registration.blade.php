@@ -33,7 +33,25 @@
 
     @if(session('vendor_user_registered'))
         <form action="">
-            <input type="submit" value="form2">
+            @csrf
+            <input name="user_id" type="hidden" value="{{session('id')}}">
+
+            <label for="name">Full Name:</label>
+            <input type="text" name="name" id="">
+
+            <label for="contact_number">Password:</label>
+            <input type="number" name="contact_number" id="">
+
+            <label for="description">Description:</label>
+            <textarea name="description"></textarea>
+
+            <label for="location">Location:</label>
+            <input type="text" name="location">
+
+            <label for="instagram_url">Instagram URL</label>
+            <input type="text" name="instagram_url">
+
+            <input type="submit">
         </form>
     @endif
 @endsection

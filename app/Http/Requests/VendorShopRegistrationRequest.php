@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class VendorShopRegistrationRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            "user_id" => "required|int|unique:users,id",
+            "name" => "required|string",
+            "contact_number" => "required|int",
+            "description" => "nullable|string",
+            "location" => "required|string|unique:vendors,location",
+            "instagram_url" => "nullable|string|unique:vendors,instagram_url"
+        ];
+    }
+}

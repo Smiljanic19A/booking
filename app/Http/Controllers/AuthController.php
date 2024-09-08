@@ -33,4 +33,20 @@ class AuthController extends Controller
 
         return redirect(route("home.home", ["user" => $newUser]));
     }
+    /*
+     *Vendor Routes:
+     */
+    public function vendorRegistration()
+    {
+        return view("auth.vendor.registration");
+    }
+    public function registerVendorUser()
+    {
+        return redirect()->back()->with("vendor_user_registered", true);
+    }
+
+    public function registerVendorInformation()
+    {
+        return redirect()->back()->with("vendor_user_registered", true);
+    }
 }

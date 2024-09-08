@@ -21,4 +21,8 @@ Route::controller(AuthController::class)
         //User Auth Routes
         Route::get("/user", "userIndex")->name("user");
         Route::post("/user/register", "registerUser")->name("user.register");
+
+        Route::get("/vendor", "vendorRegistration")->name("vendor");
+        Route::post("/vendor/register", "registerVendorUser")->name("vendor.user");
     });
+

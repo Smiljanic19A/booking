@@ -9,7 +9,7 @@
         </p>
     @endif
     <button>Sign Up As A Vendor</button>
-    <button>Sign Up As A User</button>
+    <button onclick="window.location.href = '{{ route('auth.user') }}' ">Sign Up As A User</button>
     <button onclick="window.location.href='{{ route('home.guest') }}'">Continue As Guest</button>
 @endsection
 

@@ -70,6 +70,11 @@ class AuthController extends Controller
     {
         $params = $request->except("_token");
         $vendor = Vendor::create($params);
-        dd($vendor);
+        if($vendor === null){
+            dd("Kurac nesto puklo... Napravi error page!!!"); //TODO: make an error page
+        }
+        return redirect(route("home.vendor", ['vendor' => $vendor]));
     }
+
+
 }

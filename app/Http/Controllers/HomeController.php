@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -37,5 +38,9 @@ class HomeController extends Controller
     public function pushToHome(User $user)
     {
         return view("home.home")->with("user", $user);
+    }
+    public function pushToVendor(Vendor $vendor)
+    {
+        return view("home.vendor")->with("vendor", $vendor);
     }
 }

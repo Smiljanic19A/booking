@@ -1,0 +1,11 @@
+@extends("layout")
+@section("content")
+    @if(isset($vendor))
+        <p>
+            {{$vendor->name}}
+            {{$vendor->user->username}}
+        </p>
+    @else
+        @dd("kurac")
+    @endif
+@endsection

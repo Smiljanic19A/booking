@@ -19,4 +19,5 @@ Route::controller(AuthController::class)
     ->group(function (){
         //User Auth Routes
         Route::get("/user", "userIndex")->name("user");
+        Route::post("/user/register", "registerUser")->name("user.register");
     });

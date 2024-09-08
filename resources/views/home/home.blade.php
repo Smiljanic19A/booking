@@ -3,6 +3,7 @@
         @if(isset($user))
             <p>
                 {{$user->unique_id}}
+                {{$user->username}}
             </p>
         @else
             @dd("kurac")

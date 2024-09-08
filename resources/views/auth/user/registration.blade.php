@@ -1,9 +1,19 @@
 @extends("layout")
 @section("content")
     <div class="error_block">
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
-    <form action="">
+    <form action="{{route('auth.user.register')}}" method="post">
+        @csrf
+
         <label for="username">Username:</label>
         <input type="text" name="username" id="">
 

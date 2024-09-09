@@ -76,5 +76,14 @@ class AuthController extends Controller
         return redirect(route("home.vendor", ['vendor' => $vendor]));
     }
 
+    public function loginUser()
+    {
+        dd("User Login Page");
+    }
+    public function loginVendor()
+    {
+        dd("Vendor Login Page");
+    }
+
 
 }

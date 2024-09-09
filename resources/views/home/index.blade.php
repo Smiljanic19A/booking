@@ -11,6 +11,9 @@
     <button onclick="window.location.href = '{{ route('auth.vendor') }}'">Sign Up As A Vendor</button>
     <button onclick="window.location.href = '{{ route('auth.user') }}' ">Sign Up As A User</button>
     <button onclick="window.location.href='{{ route('home.guest') }}'">Continue As Guest</button>
+    <br>
+    <button onclick="window.location.href = '{{ route('auth.vendor.login') }}'">Login As A Vendor</button>
+    <button onclick="window.location.href = '{{ route('auth.user.login') }}' ">Login As A User</button>
 @endsection
 
 <script>

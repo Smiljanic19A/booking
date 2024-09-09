@@ -20,13 +20,17 @@ Route::controller(AuthController::class)
     ->name("auth.")
     ->prefix("/auth")
     ->group(function (){
-        //User Auth Routes
-        Route::get("/user", "userIndex")->name("user");
+        //User Registration Auth Routes
+        Route::get("/user", "userIndex")->name("user"); //show user registration page
         Route::post("/user/register", "registerUser")->name("user.register");
-
-        Route::get("/vendor", "vendorRegistration")->name("vendor");
+        //Vendor Registration
+        Route::get("/vendor", "vendorRegistration")->name("vendor"); //show vendor registration page
         Route::post("/vendor/register", "registerVendorUser")->name("vendor.user");
         Route::post("/vendor/register/information", "registerVendorInformation")->name("vendor.register");
+        //User Login Auth Routes
+        Route::get("/user/login", "loginUser")->name("user.login");
+        //Vendor Login Auth Routes
+        Route::get("/vendor/login", "loginVendor")->name("vendor.login");
 
     });
 

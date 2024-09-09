@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 
-    <form action="" method="post">
+    <form action="{{ route("auth.user.login.check") }}" method="post">
         @csrf
         <label for="username">Username:</label>
         <input type="text" name="username">

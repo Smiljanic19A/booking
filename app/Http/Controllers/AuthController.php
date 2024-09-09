@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
@@ -79,6 +80,23 @@ class AuthController extends Controller
     public function loginUser()
     {
         return view("auth.user.login");
+    }
+
+    public function checkUserLogin(Request $request)
+    {
+        $user = User::where([
+            "username" => $request->username
+        ])->first();
+        if($user === null){
+            return redirect()->back()->withErrors(["user" => "Not Found"]);
+        }
+        $authenticated = Hash::check($request->password, $user->password);
+
+        if (!$authenticated){
+            return redirect()->back()->withErrors(["user" => "Not Found"]);
+        }
+        return redirect(route("home.home", ["user" => $user]));
+
     }
     public function loginVendor()
     {

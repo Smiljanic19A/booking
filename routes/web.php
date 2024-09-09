@@ -29,6 +29,7 @@ Route::controller(AuthController::class)
         Route::post("/vendor/register/information", "registerVendorInformation")->name("vendor.register");
         //User Login Auth Routes
         Route::get("/user/login", "loginUser")->name("user.login");
+        Route::post("/user/login/check", "checkUserLogin")->name("user.login.check");
         //Vendor Login Auth Routes
         Route::get("/vendor/login", "loginVendor")->name("vendor.login");
 

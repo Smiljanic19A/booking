@@ -78,7 +78,7 @@ class AuthController extends Controller
 
     public function loginUser()
     {
-        dd("User Login Page");
+        return view("auth.user.login");
     }
     public function loginVendor()
     {

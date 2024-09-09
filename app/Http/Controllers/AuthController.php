@@ -7,12 +7,20 @@ use App\Http\Requests\VendorRegistrationRequest;
 use App\Http\Requests\VendorShopRegistrationRequest;
 use App\Models\User;
 use App\Models\Vendor;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
+
+    private $authService;
+
+    public function __construct()
+    {
+        $this->authService = new AuthService();
+    }
     public function userIndex()
     {
         return view("auth.user.registration");
@@ -25,11 +33,8 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['password' => 'Passwords Do Not Match!']);
         }
         //create the user
-        $newUser = User::create([
-            "username" => $request->username,
-            "password" => Hash::make($request->password),
-            "email" => $request->email
-        ]);
+        $newUser = $this->authService->createUser($request);
+
         if($newUser === null){
             dd("Kurac nesto puklo... Napravi error page!!!"); //TODO: make an error page
         }
@@ -51,12 +56,8 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['password' => 'Passwords Do Not Match!']);
         }
         //create the user
-        $newUser = User::create([
-            "username" => $request->username,
-            "password" => Hash::make($request->password),
-            "email" => $request->email,
-            "is_vendor" => true
-        ]);
+        $newUser = $this->authService->createUser($request, true);
+
         if($newUser === null){
             dd("Kurac nesto puklo... Napravi error page!!!"); //TODO: make an error page
         }

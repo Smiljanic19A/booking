@@ -33,7 +33,5 @@ Route::controller(AuthController::class)
         //Vendor Login Auth Routes
         Route::get("/vendor/login", "loginVendor")->name("vendor.login");
         Route::post("/user/login/check", "checkVendorLogin")->name("vendor.login.check");
-
-
     });
 

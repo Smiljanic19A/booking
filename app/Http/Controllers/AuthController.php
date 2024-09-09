@@ -54,7 +54,8 @@ class AuthController extends Controller
         $newUser = User::create([
             "username" => $request->username,
             "password" => Hash::make($request->password),
-            "email" => $request->email
+            "email" => $request->email,
+            "is_vendor" => true
         ]);
         if($newUser === null){
             dd("Kurac nesto puklo... Napravi error page!!!"); //TODO: make an error page
@@ -100,7 +101,27 @@ class AuthController extends Controller
     }
     public function loginVendor()
     {
-        dd("Vendor Login Page");
+        return view("auth.vendor.login");
+    }
+
+    public function checkVendorLogin(Request $request)
+    {
+        $vendorUser = User::where([
+            "email" => $request->email
+        ])->first();
+        if($vendorUser === null){
+            return redirect()->back()->withErrors(["user" => "Not Found"]);
+        }
+        $authenticated = Hash::check($request->password, $vendorUser->password);
+
+        if (!$authenticated){
+            return redirect()->back()->withErrors(["user" => "Not Found"]);
+        }
+
+        $vendor = Vendor::where(["user_id" => $vendorUser->id])->first();
+
+        return redirect(route("home.vendor", ['vendor' => $vendor]));
+
     }
 
 

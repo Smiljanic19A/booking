@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceCreationRequest;
 use App\Models\Vendor;
 use App\Models\VendorService;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class VendorController extends Controller
         return $return->with("vendor", $vendor);
     }
 
-    public function addService(Request $request)
+    public function addService(ServiceCreationRequest $request)
     {
         //dd($request->all());
         $serviceCreated = false;

@@ -39,6 +39,8 @@ Route::controller(VendorController::class)
     ->name("setup.")
     ->prefix("/setup")
     ->group(function (){
-        Route::get("/{page}/{vendor}", "pushToXSetup")->name("page");
+        Route::get("/{page}/{vendor}", "pushToXSetup")->name("page"); //setup.page
+
+        Route::post("/service", "addService")->name("service"); //setup.service
     });
 

@@ -86,9 +86,8 @@ class AuthController extends Controller
 
     public function checkUserLogin(Request $request)
     {
-        $user = User::where([
-            "username" => $request->username
-        ])->first();
+        $user = $this->authService->findByUsername($request);
+
         if($user === null){
             return redirect()->back()->withErrors(["user" => "Not Found"]);
         }
@@ -107,9 +106,8 @@ class AuthController extends Controller
 
     public function checkVendorLogin(Request $request)
     {
-        $vendorUser = User::where([
-            "email" => $request->email
-        ])->first();
+        $vendorUser = $this->authService->findByEmail($request);
+
         if($vendorUser === null){
             return redirect()->back()->withErrors(["user" => "Not Found"]);
         }

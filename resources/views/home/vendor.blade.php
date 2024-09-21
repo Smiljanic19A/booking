@@ -13,22 +13,22 @@
     <h1>Setup You Vendor Profile!te</h1>
     <div class="setup-container">
         <!-- Services -->
-        <div class="setup_field">
+        <div onclick="window.location.href = '{{route("setup.page", ["page"=>"privacy"])}}'" class="setup_field">
             Privacy
         </div>
-        <div class="setup_field">
+        <div onclick="window.location.href = '{{route("setup.page", ["page"=>"services"])}}'" class="setup_field">
             Services
         </div>
         <!-- Schedule -->
-        <div class="setup_field">
+        <div onclick="window.location.href = '{{route("setup.page", ["page"=>"schedule"])}}'" class="setup_field">
             Schedule
         </div>
         <!-- Design -->
-        <div class="setup_field">
+        <div onclick="window.location.href = '{{route("setup.page", ["page"=>"design"])}}'" class="setup_field">
             Design
         </div>
         <!-- Settings -->
-        <div class="setup_field">
+        <div onclick="window.location.href = '{{route("setup.page", ["page"=>"settings"])}}'" class="setup_field">
             Settings
         </div>
     </div>

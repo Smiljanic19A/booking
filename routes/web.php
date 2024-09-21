@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)
@@ -33,5 +34,11 @@ Route::controller(AuthController::class)
         //Vendor Login Auth Routes
         Route::get("/vendor/login", "loginVendor")->name("vendor.login");
         Route::post("/user/login/check", "checkVendorLogin")->name("vendor.login.check");
+    });
+Route::controller(VendorController::class)
+    ->name("setup.")
+    ->prefix("/setup")
+    ->group(function (){
+        Route::get("/{page}", "pushToXSetup")->name("page");
     });
 

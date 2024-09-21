@@ -14,7 +14,13 @@
             You Currently Have 0 Services
         @else
             @foreach($services as $service)
-                <p>{{$service->name}}</p>
+                <form action="{{route('setup.service.delete')}}" method="post">
+                    @csrf
+                    <p>{{$service->name}}</p>
+                    <input name="vendor_id" type="hidden" value="{{$vendor->id}}">
+                    <input name="name" type="hidden" value="{{$service->name}}">
+                    <input type="submit" value="delete">
+                </form>
             @endforeach
         @endif
     </div>

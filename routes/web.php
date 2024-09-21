@@ -42,5 +42,6 @@ Route::controller(VendorController::class)
         Route::get("/{page}/{vendor}", "pushToXSetup")->name("page"); //setup.page
 
         Route::post("/service", "addService")->name("service"); //setup.service
+        Route::post("/service/delete", "deleteService")->name("service.delete"); //setup.service.delete
     });
 

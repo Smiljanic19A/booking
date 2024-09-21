@@ -58,4 +58,18 @@ class VendorController extends Controller
             "services" => $services
         ]);
     }
+
+    public function deleteService(Request $request)
+    {
+        //TODO ADD VALIDATION THAT THIS SERVICE IS NOT BOOKED!!!
+
+        $service = VendorService::where([
+            "vendor_id" => $request->vendor_id,
+            "name" => $request->name
+        ])->first();
+
+        $service->delete();
+
+        return redirect()->back()->with(["message" => "Service Deleted"]);
+    }
 }

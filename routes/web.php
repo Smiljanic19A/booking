@@ -39,6 +39,6 @@ Route::controller(VendorController::class)
     ->name("setup.")
     ->prefix("/setup")
     ->group(function (){
-        Route::get("/{page}", "pushToXSetup")->name("page");
+        Route::get("/{page}/{vendor}", "pushToXSetup")->name("page");
     });
 

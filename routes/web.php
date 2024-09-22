@@ -51,5 +51,8 @@ Route::controller(VendorEditController::class)
     ->group(function (){
        Route::get("/service", "serviceEditIndex")
            ->name("service");
+
+       Route::post("/service/post", "editService")
+           ->name("service.post");
     });
 

@@ -44,6 +44,7 @@ Route::controller(VendorController::class)
 
         Route::post("/service", "addService")->name("service"); //setup.service
         Route::post("/service/delete", "deleteService")->name("service.delete"); //setup.service.delete
+        Route::post("/privacy", "savePrivacySettings")->name("privacy"); //setup.privacy
     });
 Route::controller(VendorEditController::class)
     ->name("edit.")

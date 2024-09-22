@@ -73,5 +73,8 @@ class VendorController extends Controller
         return redirect()->back()->with(["message" => "Service Deleted"]);
     }
 
-
+    public function savePrivacySettings(Request $request)
+    {
+        dd($request->all());
+    }
 }

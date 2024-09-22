@@ -10,21 +10,23 @@
             </div>
         </div>
     </div>
-    <form class="form" id="public-form" action="">
+    <form class="form" id="public-form" action="{{route("setup.privacy")}}" method="post">
+        @csrf
         <div>
             Make Location Private?
         </div>
         <div id="yesButton" onclick="toggleLocationPrivacy(0)">Yes</div>
         <div id="noButton" onclick="toggleLocationPrivacy(1)">No</div>
         <input type="hidden" name="private_location" value="0" id="privateLocation">
-        <input type="hidden" id="public" value="1">
+        <input type="hidden" name="isPublic" id="isPublic" value="1">
         <input type="submit" value="Save Settings">
     </form>
-    <form class="form" id="private-form" action="">
+    <form class="form" id="private-form" action="{{route("setup.privacy")}}" method="post">
+        @csrf
         <div class="share_link">
             <h1>Here is your share link!</h1>
         </div>
-        <input type="hidden" id="public" value="0">
+        <input type="hidden" name="isPublic" id="isPublic" value="0">
         <input type="submit" value="Save Settings">
     </form>
 @endsection

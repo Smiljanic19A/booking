@@ -2,9 +2,9 @@
 @section("content")
     <h1>Customize Your Design:</h1>
     <div class="template_container">
-        <div class="template">Template 1</div>
-        <div class="template">Template 2</div>
-        <div class="template">Template 3</div>
+        <div onclick="setTemplateId(1)" class="template">Template 1</div>
+        <div onclick="setTemplateId(2)" class="template">Template 2</div>
+        <div onclick="setTemplateId(3)" class="template">Template 3</div>
     </div>
 
     <input name="primary_color" type="text" id="colorPickerPrimary" />
@@ -13,17 +13,34 @@
 
 
     <form>
-        <input type="hidden" name="template_id">
+        <input type="hidden" name="template_id" id="templateId" value="">
         <input type="hidden" id="primary" name="primary_color" value="-1">
         <input type="hidden" id="secondary" name="secondary_color" value="-1">
         <input type="hidden" id="accent" name="accent_color" value="-1">
         <input type="hidden" name="vendor_id" value="{{$vendor->id}}">
         <input type="file" name="logo">
+        <input type="submit" value="Save Design">
     </form>
+    <style>
+        .template_container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .template{
+            padding: 40px;
+            background-color: grey;
+            border: 2px solid black;
+        }
+    </style>
     <script>
         $(document).ready(function() {
             initializeColorPickers();
         });
+        function setTemplateId(id){
+            $("#templateId").val(id)
+        }
         function setAccentColorValue(which, color){
             switch (which){
                 case 1:

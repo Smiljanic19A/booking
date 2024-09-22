@@ -21,6 +21,11 @@
                     <input name="name" type="hidden" value="{{$service->name}}">
                     <input type="submit" value="delete">
                 </form>
+                <form action="{{route('edit.service')}}" method="get">
+                    <input name="vendor_id" type="hidden" value="{{$vendor->id}}">
+                    <input name="name" type="hidden" value="{{$service->name}}">
+                    <input type="submit" value="edit">
+                </form>
             @endforeach
         @endif
     </div>

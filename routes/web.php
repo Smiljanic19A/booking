@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\VendorEditController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)
@@ -43,5 +44,12 @@ Route::controller(VendorController::class)
 
         Route::post("/service", "addService")->name("service"); //setup.service
         Route::post("/service/delete", "deleteService")->name("service.delete"); //setup.service.delete
+    });
+Route::controller(VendorEditController::class)
+    ->name("edit.")
+    ->prefix("/edit")
+    ->group(function (){
+       Route::get("/service", "serviceEditIndex")
+           ->name("service");
     });
 

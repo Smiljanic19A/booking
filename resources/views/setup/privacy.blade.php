@@ -19,6 +19,7 @@
         <div id="noButton" onclick="toggleLocationPrivacy(1)">No</div>
         <input type="hidden" name="private_location" value="0" id="privateLocation">
         <input type="hidden" name="isPublic" id="isPublic" value="1">
+        <input type="hidden" name="vendor_id" value="{{$vendor->id}}">
         <input type="submit" value="Save Settings">
     </form>
     <form class="form" id="private-form" action="{{route("setup.privacy")}}" method="post">
@@ -28,6 +29,7 @@
         </div>
         <input type="hidden" name="isPublic" id="isPublic" value="0">
         <input type="submit" value="Save Settings">
+        <input type="hidden" name="vendor_id" value="{{$vendor->id}}">
     </form>
 @endsection
 <script>

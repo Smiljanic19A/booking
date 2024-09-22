@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceCreationRequest;
 use App\Models\Vendor;
+use App\Models\VendorPrivacySettings;
 use App\Models\VendorService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class VendorController extends Controller
@@ -75,6 +77,41 @@ class VendorController extends Controller
 
     public function savePrivacySettings(Request $request)
     {
-        dd($request->all());
+        $vendor = Vendor::where(["id" => $request->vendor_id])->first();
+        //create the params
+        $isPublic = $request->isPublic;
+        $privateLocation = $isPublic === "0" ? 1 : $request->private_location;
+
+        $pat = $this->generatePersonalAccessToken();
+
+        $settings = VendorPrivacySettings::create([
+            "vendor_id" => $vendor->id,
+            "public" => $isPublic,
+            "private_location" => $privateLocation,
+            "pat" => $isPublic ? null : $pat
+        ]);
+
+        dd($settings);
+
+    }
+
+    public function generatePersonalAccessToken()
+    {
+        $unique = false;
+
+        while (!$unique) {
+            // Generate a random 20-character token
+            $pat = Str::random(20);
+
+            // Check if the generated token is unique in the VendorPrivacySettings
+            $exists = VendorPrivacySettings::where('pat', $pat)->exists();
+
+            if (!$exists) {
+                // If unique, exit the loop
+                $unique = true;
+            }
+        }
+        // Return or store the generated token
+        return $pat;
     }
 }

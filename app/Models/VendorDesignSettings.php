@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class VendorDesignSettings extends Model
 {
     protected $table = "vendor_design_settings";
-    protected $fillable = ["template_id", "logo_name", "primary_color", "secondary_color", "accent_color"];
+    protected $fillable = ["vendor_id", "template_id", "logo_name", "primary_color", "secondary_color", "accent_color"];
 }

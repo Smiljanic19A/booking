@@ -12,7 +12,8 @@
     <input name="accent_color" type="text" id="colorPickerAccent" />
 
 
-    <form>
+    <form method="post" action="{{route("setup.design")}}">
+        @csrf
         <input type="hidden" name="template_id" id="templateId" value="">
         <input type="hidden" id="primary" name="primary_color" value="-1">
         <input type="hidden" id="secondary" name="secondary_color" value="-1">

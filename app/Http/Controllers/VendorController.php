@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceCreationRequest;
+use App\Http\Requests\VendorDesignSettingsRequest;
 use App\Models\Vendor;
+use App\Models\VendorDesignSettings;
 use App\Models\VendorPrivacySettings;
 use App\Models\VendorService;
 use Illuminate\Http\Request;
@@ -94,6 +96,27 @@ class VendorController extends Controller
         return redirect()->route("home.vendor", ["vendor" => $vendor])->with("message", "Privacy Settings Updated");
 
     }
+
+    public function saveDesignSettings(VendorDesignSettingsRequest $request)
+    {
+        $vendor = Vendor::where(["id" => $request->vendor_id])->first();
+
+
+        $primaryColor = $request->primary_color === '-1' ? null : $request->primary_color;
+        $secondaryColor = $request->secondary_color === '-1' ? null : $request->secondary_color;
+        $accentColor = $request->accent_color === '-1' ? null : $request->accent_color;
+
+        $designSettings = VendorDesignSettings::create([
+            "vendor_id" => $request->vendor_id,
+            "template_id" => $request->template_id,
+            "logo_name" => null, //todo: implement image storing
+            "primary_color" => $primaryColor,
+            "secondary_color" => $secondaryColor,
+            "accent_color" => $accentColor
+        ]);
+
+        return redirect()->route("home.vendor", ["vendor" => $vendor])->with("message", "Design Settings Updated");
+    }
     // todo: should move this to a helper, or a service once refactoring
     public function generatePersonalAccessToken()
     {
@@ -114,4 +137,6 @@ class VendorController extends Controller
         // Return or store the generated token
         return $pat;
     }
+
+
 }

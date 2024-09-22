@@ -91,10 +91,10 @@ class VendorController extends Controller
             "pat" => $isPublic ? null : $pat
         ]);
 
-        dd($settings);
+        return redirect()->route("home.vendor", ["vendor" => $vendor])->with("message", "Privacy Settings Updated");
 
     }
-
+    // todo: should move this to a helper, or a service once refactoring
     public function generatePersonalAccessToken()
     {
         $unique = false;

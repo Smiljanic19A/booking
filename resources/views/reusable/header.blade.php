@@ -9,5 +9,10 @@
             </ul>
         </div>
     @endif
+        @if(session('message'))
+            <h3>
+                {{session('message')}}
+            </h3>
+        @endif
 </div>
 

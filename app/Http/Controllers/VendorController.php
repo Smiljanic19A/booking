@@ -117,6 +117,11 @@ class VendorController extends Controller
 
         return redirect()->route("home.vendor", ["vendor" => $vendor])->with("message", "Design Settings Updated");
     }
+
+    public function saveScheduleSettings(Request $request)
+    {
+
+    }
     // todo: should move this to a helper, or a service once refactoring
     public function generatePersonalAccessToken()
     {
